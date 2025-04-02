@@ -25,7 +25,7 @@ async def main():
     semaphore = asyncio.Semaphore(1)  # Limit the number of concurrent requests
     async with aiohttp.ClientSession() as session:  # Creates a session for all requests
         results = []
-        for i in range(1967, 1969+1):  # Process one year at a time
+        for i in range(1967, 2017+1):  # Process one year at a time
             tasks = [fetch_data_with_semaphore(session, year, semaphore) for year in range(i, i + 1)]
             print(f"Fetching data for year {i}")
             batch_results = await asyncio.gather(*tasks)  # Runs the tasks for one year
