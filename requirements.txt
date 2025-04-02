@@ -1,0 +1,9 @@
+requests
+pandas
+pyarrow
+google-cloud-storage
+sqlalchemy
+aiohttp
+apache-airflow
+google-cloud-bigquery
+apache-airflow-providers-apache-spark
