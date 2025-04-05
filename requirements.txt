@@ -7,3 +7,6 @@ aiohttp
 apache-airflow
 google-cloud-bigquery
 apache-airflow-providers-apache-spark
+scikit-learn
+google-cloud-bigquery
+pandas-gbq
