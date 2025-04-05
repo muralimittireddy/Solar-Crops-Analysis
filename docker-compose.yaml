@@ -313,6 +313,19 @@ services:
     networks:
       - spark-network
 
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_INSTALL_PLUGINS=grafana-bigquery-datasource
+      - GOOGLE_CLOUD_PROJECT=solarcropsanalysis-454507 # optional, can be auto-detected
+    extra_hosts:
+      - "metadata.google.internal:169.254.169.254"
+
 networks:
   spark-network:
     driver: bridge
