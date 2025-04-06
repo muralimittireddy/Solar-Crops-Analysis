@@ -36,6 +36,8 @@ x-airflow-common: &airflow-common
     - ${AIRFLOW_PROJ_DIR}/config:/opt/airflow/config
     - ${AIRFLOW_PROJ_DIR}/plugins:/opt/airflow/plugins
     - ${jobs_dir}/jobs:/opt/airflow/jobs
+    - /home/murali/Solar-Crops-Analysis/ml_model_scripts:/opt/airflow/ml_model_scripts
+
     # - C:/Users/murali/gcp_keys/gcs_key.json:/opt/airflow/service-account.json
     # - ${AIRFLOW_PROJ_DIR:-.}/requirements.txt:/opt/airflow/requirements.txt
   user: "${AIRFLOW_UID:-50000}:0"

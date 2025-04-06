@@ -3,7 +3,7 @@ from airflow.operators.python import PythonOperator
 from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 from datetime import datetime, timedelta
 from extract import extract_data
-from ml_model_scripts.random_forest_regressor import predict_rice_yield
+from ml_model_scripts.random_forest_regression import predict_rice_yield
 
 default_args = {
     'owner': 'airflow',
@@ -23,7 +23,7 @@ dag = DAG(
 
 start = PythonOperator(
     task_id="start",
-    # python_callable=lambda: print("Jobs started"),
+    python_callable=lambda: print("Jobs started"),
     dag=dag
 )
 
@@ -59,5 +59,4 @@ end = PythonOperator(
     dag=dag
 )
 
-# start >> extract_task >> submit_spark_job >> run_prediction >> end
-start >> run_prediction >> end
+start >> extract_task >> submit_spark_job >> run_prediction >> end
