@@ -157,12 +157,9 @@ Make sure you're inside the project directory:
 
 Once the containers are up and running, open your browser and access:
 
- _________________________________________________________________
- 
-| Service	   |                    URL                              |
-
-| Airflow UI | [Apache Airflow UI] (http://<EXTERNAL_IP>:8080)     |
-
-| Grafana    | [Grafana Dashboards] (http://<EXTERNAL_IP>:3000)    |
+| Service    |                        URL                       |
+|------------|--------------------------------------------------|
+| Airflow UI | [Apache Airflow UI] (http://<EXTERNAL_IP>:8080)  |
+| Grafana    | [Grafana Dashboards] (http://<EXTERNAL_IP>:3000) |
 
  Replace <EXTERNAL_IP> with your GCP VM’s public IP.
