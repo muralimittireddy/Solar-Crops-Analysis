@@ -13,4 +13,8 @@
 - 📦 Containerized using **Docker**
 - 🌐 Fully deployed and executed in a **GCP Virtual Machine**
 
+## Project Architecture
+
+Here’s an overview of the project architecture:
+
 ![Project Architecture](images/architecture.png)
