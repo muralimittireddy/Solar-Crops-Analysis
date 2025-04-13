@@ -47,9 +47,9 @@ Before creating the VM:
 
 Create firewall rules to allow external access to essential services:
 
-| Port | Purpose           |
-|------|-------------------|
-| 8080 | Apache Airflow UI |
+| Port | Purpose            |
+|------|--------------------|
+| 8080 | Apache Airflow UI  |
 | 3000 | Grafana Dashboards |
 
 Set up these rules under **VPC Network > Firewall** with **Ingress** direction.
@@ -71,9 +71,9 @@ Set up these rules under **VPC Network > Firewall** with **Ingress** direction.
 
 #### 4.1 On Local Machine
 
-cd ~/.ssh
+    cd ~/.ssh
 
-ssh-keygen -t rsa -f solar_key -C your_username
+    ssh-keygen -t rsa -f solar_key -C your_username
 
 This will generate:
 
@@ -89,7 +89,7 @@ Go to Compute Engine > Metadata > SSH Keys and paste the contents of solar_key.p
 
 Option 1: Direct command
 
-ssh -i ~/.ssh/solar_key your_username@<EXTERNAL_IP>
+    ssh -i ~/.ssh/solar_key your_username@<EXTERNAL_IP>
 
 Option 2: SSH config (recommended)
 
@@ -105,17 +105,60 @@ Create a config file ~/.ssh/config:
     
 Then connect with:
 
-ssh solar-vm
+    ssh solar-vm
 
 ---
 ### 🐳 Step 5: Install Docker & Docker Compose
 
 #### 5.1 Install Docker
 
-sudo apt update
+    sudo apt update
 
-sudo apt install -y docker.io
+    sudo apt install -y docker.io
 
 After installing  to run docker without sudo commands, follow the below github repo
 
 https://github.com/sindresorhus/guides/blob/main/docker-without-sudo.md
+
+#### 5.2 Install Docker Compose
+
+    mkdir bin
+    cd bin
+    curl -L "https://github.com/docker/compose/releases/download/v2.35.0/docker-compose-linux-x86_64" -o docker-compose
+    chmod +x docker-compose
+    echo 'export PATH=${HOME}/bin:${PATH}' >> ~/.bashrc
+    source ~/.bashrc
+    
+Verify installation:
+
+    docker --version
+    docker-compose --version
+
+---
+
+### 📦 Step 6: Clone the Project Repository
+
+Clone the GitHub repository into your VM:
+
+    git clone https://github.com/muralimittireddy/Solar-Crops-Analysis.git
+    cd Solar-Crops-Analysis
+
+---
+
+### 🚀 Step 7: Run the Project Using Docker Compose
+
+Make sure you're inside the project directory:
+
+    docker-compose up --build
+---
+
+### 📊  Step 8: Access the Services
+
+Once the containers are up and running, open your browser and access:
+
+ _________________________________________________________________
+| Service	   |                    URL                              |
+| Airflow UI | [Apache Airflow UI] (http://<EXTERNAL_IP>:8080)     |
+| Grafana    | [Grafana Dashboards] (http://<EXTERNAL_IP>:3000)    |
+
+ Replace <EXTERNAL_IP> with your GCP VM’s public IP.
