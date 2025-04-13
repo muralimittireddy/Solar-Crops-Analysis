@@ -93,15 +93,15 @@ ssh -i ~/.ssh/solar_key your_username@<EXTERNAL_IP>
 
 Option 2: SSH config (recommended)
 
-Create/edit ~/.ssh/config:
+Create a config file ~/.ssh/config:
 
-Host solar-vm
+    Host solar-vm
 
-    HostName <EXTERNAL_IP>
-    
-    User your_username
-    
-    IdentityFile ~/.ssh/solar_key
+      HostName <EXTERNAL_IP>
+      
+      User your_username
+      
+      IdentityFile ~/.ssh/solar_key
     
 Then connect with:
 
