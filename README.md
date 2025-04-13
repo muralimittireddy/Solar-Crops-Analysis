@@ -12,3 +12,5 @@
 - 🧩 Orchestrate tasks using **Apache Airflow**
 - 📦 Containerized using **Docker**
 - 🌐 Fully deployed and executed in a **GCP Virtual Machine**
+
+![Project Architecture](images/architecture.png)
