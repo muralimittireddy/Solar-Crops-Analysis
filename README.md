@@ -81,11 +81,11 @@ solar_key → Private Key
 
 solar_key.pub → Public Key
 
-4.2 Add Public Key to VM Metadata
+#### 4.2 Add Public Key to VM Metadata
 
 Go to Compute Engine > Metadata > SSH Keys and paste the contents of solar_key.pub.
 
-4.3 Connect to the VM
+#### 4.3 Connect to the VM
 
 Option 1: Direct command
 
@@ -106,3 +106,15 @@ Create a config file ~/.ssh/config:
 Then connect with:
 
 ssh solar-vm
+---
+### 🐳 Step 5: Install Docker & Docker Compose
+
+#### 5.1 Install Docker
+
+sudo apt update
+
+sudo apt install -y docker.io
+
+After installing  to run docker without sudo commands, follow the below github repo
+
+https://github.com/sindresorhus/guides/blob/main/docker-without-sudo.md
