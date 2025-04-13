@@ -106,6 +106,7 @@ Create a config file ~/.ssh/config:
 Then connect with:
 
 ssh solar-vm
+
 ---
 ### 🐳 Step 5: Install Docker & Docker Compose
 
