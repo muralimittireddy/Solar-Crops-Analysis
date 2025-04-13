@@ -33,13 +33,13 @@ Before creating the VM:
 
 1. Go to **IAM & Admin > Service Accounts** in the GCP Console.
 2. Create a new service account and assign the following roles:
-  BigQuery Admin
-  BigQuery Data Editor
-  BigQuery Job User
-  BigQuery Read Session User
-  Editor
-  Storage Admin
-  Storage Object Creator
+  BigQuery Admin,
+  BigQuery Data Editor,
+  BigQuery Job User,
+  BigQuery Read Session User,
+  Editor,
+  Storage Admin,
+  Storage Object Creator,
   Storage Object Viewer
 3. While creating the VM (in the next step), **attach this service account** to the instance.
 ---
@@ -85,6 +85,7 @@ solar_key.pub → Public Key
 Go to Compute Engine > Metadata > SSH Keys and paste the contents of solar_key.pub.
 
 4.3 Connect to the VM
+
 Option 1: Direct command
 ssh -i ~/.ssh/solar_key your_username@<EXTERNAL_IP>
 
@@ -95,5 +96,6 @@ Host solar-vm
     HostName <EXTERNAL_IP>
     User your_username
     IdentityFile ~/.ssh/solar_key
+    
 Then connect with:
 ssh solar-vm
