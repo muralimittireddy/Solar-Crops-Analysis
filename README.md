@@ -71,8 +71,8 @@ Set up these rules under **VPC Network > Firewall** with **Ingress** direction.
 
 #### 4.1 On Local Machine
 
-bash
 cd ~/.ssh
+
 ssh-keygen -t rsa -f solar_key -C your_username
 
 This will generate:
@@ -82,20 +82,27 @@ solar_key → Private Key
 solar_key.pub → Public Key
 
 4.2 Add Public Key to VM Metadata
+
 Go to Compute Engine > Metadata > SSH Keys and paste the contents of solar_key.pub.
 
 4.3 Connect to the VM
 
 Option 1: Direct command
+
 ssh -i ~/.ssh/solar_key your_username@<EXTERNAL_IP>
 
 Option 2: SSH config (recommended)
 
 Create/edit ~/.ssh/config:
+
 Host solar-vm
+
     HostName <EXTERNAL_IP>
+    
     User your_username
+    
     IdentityFile ~/.ssh/solar_key
     
 Then connect with:
+
 ssh solar-vm
