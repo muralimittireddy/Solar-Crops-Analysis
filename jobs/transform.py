@@ -1,4 +1,5 @@
 import logging
+import os
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
     col, date_format, mean, sum as _sum, stddev, when, min as _min, max as _max, lit
@@ -27,11 +28,19 @@ spark.conf.set("fs.AbstractFileSystem.gs.impl", "com.google.cloud.hadoop.fs.gcs.
 
 
 
-# PostgreSQL Connection
-postgres_url = "jdbc:postgresql://postgres_app/app_db"
+# Load environment variables
+postgres_host = os.getenv("APP_POSTGRES_HOST", "postgres_app")  # Default to postgres_app if not set
+postgres_db = os.getenv("APP_POSTGRES_DB", "app_db")  # Default to app_db if not set
+postgres_user = os.getenv("APP_POSTGRES_USER", "app_user")  # Default to app_user if not set
+postgres_password = os.getenv("APP_POSTGRES_PASSWORD", "app_password")  # Default to app_password if not set
+
+# Construct the PostgreSQL URL using environment variables
+postgres_url = f"jdbc:postgresql://{postgres_host}/{postgres_db}"
+
+# Set up the properties dictionary using environment variables
 properties = {
-    "user": "app_user",
-    "password": "app_password",
+    "user": postgres_user,
+    "password": postgres_password,
     "driver": "org.postgresql.Driver"
 }
 
@@ -132,11 +141,21 @@ seasonal_precip_range = seasonal_precip_max - seasonal_precip_min if seasonal_pr
 
 seasonal_agg = seasonal_agg.withColumn("drought_index", (col("precipitation") - lit(seasonal_precip_min)) / lit(seasonal_precip_range))
 
+# Access environment variables
+project_id = os.getenv("PROJECT_ID")
+dataset = os.getenv("BIGQUERY_DATASET")
+gcs_bucket = os.getenv("GCS_BUCKET_NAME")
+
+# BigQuery table names
+daily_table = os.getenv("DAILY_TABLE")
+monthly_table = os.getenv("MONTHLY_TABLE")
+seasonal_table = os.getenv("SEASONAL_TABLE")
+
 # Save to BigQuery
-for df, table in [(daily_agg, "Daily_WeatherData"), (monthly_agg, "Monthly_WeatherData"), (seasonal_agg, "Seasonal_WeatherData")]:
+for df, table in [(daily_agg, daily_table), (monthly_agg, monthly_table), (seasonal_agg, seasonal_table)]:
     df.write.format("bigquery") \
-        .option("table", f"solarcropsanalysis-454507.weatherData_SolarCropsAnalysis_1.{table}") \
-        .option("temporaryGcsBucket", "solar-crops-analysis-archival-data-1") \
+        .option("table", f"{project_id}.{dataset}.{table}") \
+        .option("temporaryGcsBucket", gcs_bucket) \
         .mode("overwrite") \
         .save()
 

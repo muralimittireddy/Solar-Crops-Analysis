@@ -9,10 +9,14 @@ from sqlalchemy import create_engine
 import aiohttp  # Async HTTP library
 import asyncio  # Async programming library
 
-POSTGRES_CONN = "postgresql://app_user:app_password@postgres_app:5432/app_db"
+ #"postgresql://app_user:app_password@postgres_app:5432/app_db"
+POSTGRES_CONN = (
+    f"postgresql://{os.getenv('APP_POSTGRES_USER')}:{os.getenv('APP_POSTGRES_PASSWORD')}"
+    f"@{os.getenv('APP_POSTGRES_HOST')}:{os.getenv('APP_POSTGRES_PORT')}/{os.getenv('APP_POSTGRES_DB')}"
+)
 engine = create_engine(POSTGRES_CONN)
 # Google Cloud Storage settings
-GCS_BUCKET_NAME = "solar-crops-analysis-archival-data-1"  # Replace with your GCS bucket name
+GCS_BUCKET_NAME = os.getenv("GCS_BUCKET_NAME")  # Replace with your GCS bucket name
 # Define a local storage path using the OS module
 LOCAL_STORAGE_PATH = os.path.join(os.getcwd(), "temp_storage")
 
