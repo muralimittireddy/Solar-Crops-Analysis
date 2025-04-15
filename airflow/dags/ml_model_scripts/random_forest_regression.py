@@ -80,13 +80,14 @@ def predict_rice_yield():
         rainfall_variability=('precipitation', 'std')
     ).reset_index()
 
+    # print(len(seasonal_features))
+    # print(seasonal_features)
+    # print(crop_data)
     # Now merge with crop data for prediction
     df = pd.merge(seasonal_features, crop_data, on='year')
     # ----------------------------------------
     # 3. Preprocessing
     # ----------------------------------------
-    df.dropna(inplace=True)
-    print(f"📉 After dropping NA: {df.shape[0]} rows")
 
     feature_cols = [
       'avg_temp', 'max_temp', 'min_temp', 'total_rainfall',
@@ -94,10 +95,16 @@ def predict_rice_yield():
       'total_gdd', 'max_gdd', 'heat_stress_days', 'soil_moisture_index',
       'rainfall_variability', 'RICE_AREA_1000_ha', 'RICE_PRODUCTION_1000_tons'
     ]
-
     X = df[feature_cols]
     y = df['RICE_YIELD_Kg_per_ha']
     year = df['year']
+    # print(" after x y year transformation")
+    # print(len(X))
+    # print(len(y))
+    # print(len(year))
+    # print(X)
+    # print(y)
+    # print(year)
     # ----------------------------------------
     # 4. Train/Test Split
     # ----------------------------------------
