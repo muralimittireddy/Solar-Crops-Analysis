@@ -176,14 +176,23 @@ Clone the GitHub repository into your VM:
 
 ---
 
-### 🚀 Step 7: Run the Project Using Docker Compose
+### Step 7: Replace Environment Variables
+
+Before executing the application, **you must replace the placeholder values** in the `.env` file with your specific credentials and configurations. 
+
+- Open the `.env` file.
+- Replace the placeholder values with your actual values (e.g., `your_airflow_user`, `your_project_id`, `your_gcs_bucket_name`, etc.).
+
+---
+
+### 🚀 Step 8: Run the Project Using Docker Compose
 
 Make sure you're inside the project directory:
 
     docker-compose up --build
 ---
 
-### 📊  Step 8: Access the Services
+### 📊  Step 9: Access the Services
 
 Once the containers are up and running, open your browser and access:
 
