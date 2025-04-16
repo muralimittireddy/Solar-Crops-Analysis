@@ -193,3 +193,31 @@ Once the containers are up and running, open your browser and access:
 | Grafana    | [Grafana Dashboards] (http://<EXTERNAL_IP>:3000) |
 
  Replace <EXTERNAL_IP> with your GCP VM’s public IP.
+
+---
+
+ ## 🔌 Airflow Connection Setup
+
+Before triggering the DAG, ensure that the required Airflow connection is configured properly.
+
+### ✅ Spark Connection
+
+The DAG uses a **Spark connection** to run transformations. You need to create this connection in the Airflow UI:
+
+1. Go to the **Airflow Web UI** (usually at `http://<your-vm-ip>:8080`)
+2. Click on **Admin > Connections**
+3. Click the **+** button to add a new connection
+4. Enter the following details:
+
+| Field              | Value                                  |
+|--------------------|----------------------------------------|
+| **Conn Id**        | `spark_mm`                             |
+| **Conn Type**      | `Spark`                                |
+| **Host**           | `spark://spark-master`                 |
+| **Port**           |  `7077`                                |
+| **Extra** (optional) | `{}` or leave empty                  |
+
+> 📝 Note: The connection ID (`spark_default`) should match the one referenced in your DAG file.
+
+After this step, you're ready to trigger the DAG successfully.
+
