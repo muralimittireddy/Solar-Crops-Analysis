@@ -217,7 +217,26 @@ The DAG uses a **Spark connection** to run transformations. You need to create t
 | **Port**           |  `7077`                                |
 | **Extra** (optional) | `{}` or leave empty                  |
 
-> 📝 Note: The connection ID (`spark_default`) should match the one referenced in your DAG file.
+> 📝 Note: The connection ID (`spark_mm`) should match the one referenced in your DAG file.
 
 After this step, you're ready to trigger the DAG successfully.
 
+---
+
+## 📊 Grafana Dashboards
+
+This project uses **Grafana** to visualize key metrics and insights from the pipeline.
+
+- **Dashboard Panel 1**: Displays Actual_Yield vs Predicted_Yield and Min_Max Temperatures
+- **Dashboard Panel 2**: Shows Average Rainfall (mm) over 51 years.
+
+![Grafana Dashboards](images/dashboard_1.png)
+
+![Grafana Dashboards](images/dashboard_2.png)
+
+### 🔐 How to Access Grafana
+
+1. Open your browser and navigate to **`http://<your-vm-ip>:3000`**.
+2. The default login credentials are:
+   - **Username**: `admin`
+   - **Password**: `admin` (You will be prompted to change it upon first login)
