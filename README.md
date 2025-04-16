@@ -19,6 +19,36 @@ Here’s an overview of the project architecture:
 
 ![Project Architecture](images/architecture.png)
 
+---
+
+### 🌾 Crop Data Ingestion
+
+Along with weather data, the project uses historical crop statistics for enhanced analysis and machine learning model training.
+
+#### 📌 Data Source:
+The crop data is downloaded from the **ICRISAT District-Level Database**.
+
+#### 📍 Location Chosen:
+- **State:** Andhra Pradesh (AP)  
+- **District:** Visakhapatnam
+
+#### 🌾 Crops & Features Selected:
+
+We focused on the **Rice** crop and selected the following attributes:
+
+- `RICE_AREA_1000_ha` — Cultivated area (in thousand hectares)  
+- `RICE_PRODUCTION_1000_tons` — Production (in thousand tons)  
+- `RICE_YIELD_Kg_per_ha` — Yield (in kilograms per hectare)  
+- `Year` — Time series data to track trends over years
+
+#### 📤 How It Was Used:
+- The data was  uploaded to **BigQuery** as a separate table.
+- This dataset was used as part of the **training data** for the **Random Forest Machine Learning model**, where it was joined with weather metrics to enhance predictive capability.
+
+---
+
+
+
 ## 🛠️ Installation Guide
 
 This guide provides step-by-step instructions to set up and run the Solar Crops Analysis project on a Google Cloud Platform (GCP) Virtual Machine.
