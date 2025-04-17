@@ -243,9 +243,27 @@ This project uses **Grafana** to visualize key metrics and insights from the pip
 
 ![Grafana Dashboards](images/dashboard_2.png)
 
-### 🔐 How to Access Grafana
 
-1. Open your browser and navigate to **`http://<your-vm-ip>:3000`**.
-2. The default login credentials are:
-   - **Username**: `admin`
-   - **Password**: `admin` (You will be prompted to change it upon first login)
+Created three interactive dashboards in Grafana by connecting to **Google BigQuery** as the data source. These dashboards provide insights into agricultural and weather trends over time.
+
+### 1. Actual Yield vs Predicted Yield
+- **Data Source:** `predictions` table in BigQuery
+- **Steps:**
+  - Configured BigQuery as a data source in Grafana.
+  - Wrote SQL to fetch `actual_yield`, `predicted_yield`, and `year` as time.
+  - Used a **Time series** panel to plot actual vs predicted yield.
+  - Added color differentiation for better visual clarity.
+
+### 2. Min/Max Temperature Trends
+- **Data Source:** `daily_weather_data` table in BigQuery
+- **Steps:**
+  - Queried `min_temperature`, `max_temperature`, and corresponding `date` fields.
+  - Used a **Time series** panel to plot both temperature lines over time.
+  - Customized axes, labels for better interpretability.
+
+### 3. 51-Year Average Rainfall Analysis
+- **Data Source:** `daily_weather_data` table in BigQuery
+- **Steps:**
+  - Extracted year from the `date` field and calculated `AVG(rainfall)` grouped by month using SQL.
+  - Visualized the results using a **Bar chart** panel.
+  - Applied formatting for better year-wise rainfall trend analysis.
