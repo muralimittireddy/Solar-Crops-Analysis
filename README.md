@@ -243,6 +243,7 @@ This project uses **Grafana** to visualize key metrics and insights from the pip
 
 ![Grafana Dashboards](images/dashboard_2.png)
 
+### Dashboard Details
 
 Created three interactive dashboards in Grafana by connecting to **Google BigQuery** as the data source. These dashboards provide insights into agricultural and weather trends over time.
 
