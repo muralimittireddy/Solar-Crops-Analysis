@@ -176,9 +176,9 @@ Clone the GitHub repository into your VM:
 
 ---
 
-### Step 7: Configure Environment Variables
+### Step 7: Replace Environment Variables
 
-Before executing the application, you need to create your own `.env` file and populate it with your credentials.
+Before executing the application, create your own `.env` file and populate it with the values that match your deployment.
 
 - Copy the provided `.env.example` file and rename it to `.env`:
 
@@ -186,7 +186,29 @@ Before executing the application, you need to create your own `.env` file and po
   cp .env.example .env
   ```
 
-- Open the newly created `.env` file and replace the placeholder values with your actual credentials (e.g., `your_airflow_user`, `your_project_id`, `your_gcs_bucket_name`, etc.).
+- Open the newly created `.env` file and replace the placeholder values with your actual credentials. The variables you need to provide are:
+
+  - `AIRFLOW_PROJ_DIR` – path to the Airflow project directory.
+  - `jobs_dir` – path where job scripts reside.
+  - `AIRFLOW_UID` – user ID used by Airflow containers.
+  - `POSTGRES_USER` – username for the Airflow PostgreSQL database.
+  - `POSTGRES_PASSWORD` – password for the Airflow PostgreSQL database.
+  - `POSTGRES_DB` – name of the Airflow PostgreSQL database.
+  - `APP_POSTGRES_USER` – username for the application PostgreSQL instance.
+  - `APP_POSTGRES_PASSWORD` – password for the application PostgreSQL instance.
+  - `APP_POSTGRES_DB` – name of the application PostgreSQL database.
+  - `APP_POSTGRES_PORT` – port exposed by the PostgreSQL container (typically `5432`).
+  - `APP_POSTGRES_HOST` – hostname or container name for PostgreSQL.
+  - `GCS_BUCKET_NAME` – Google Cloud Storage bucket where data is stored.
+  - `PROJECT_ID` – your Google Cloud project identifier.
+  - `BIGQUERY_DATASET` – BigQuery dataset where tables will be created.
+  - `DAILY_TABLE` – BigQuery table name for daily weather data.
+  - `MONTHLY_TABLE` – BigQuery table name for monthly summaries.
+  - `SEASONAL_TABLE` – BigQuery table name for seasonal summaries.
+  - `CROP_DATA_TABLE` – BigQuery table name containing crop statistics.
+  - `PREDICTION_TABLE` – BigQuery table name used for model predictions.
+
+> **Note**: Keep these credentials private and avoid committing them to version control.
 
 ---
 
