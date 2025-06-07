@@ -15,9 +15,9 @@ def predict_rice_yield():
     # Access environment variables
     project_id = os.getenv("PROJECT_ID")
     dataset = os.getenv("BIGQUERY_DATASET")
-    prediction_table = os.getenv("prediction_table")
+    prediction_table = os.getenv("PREDICTION_TABLE")
     daily_data = os.getenv("DAILY_TABLE")
-    crop_yearly_data = os.getenv("crop_data_table")
+    crop_yearly_data = os.getenv("CROP_DATA_TABLE")
 
     # ----------------------------------------
     # 2. Load data from BigQuery
