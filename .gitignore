@@ -1,0 +1,16 @@
+# Ignore environment files
+.env
+!.env.example
+
+# Logs
+logs/
+*.log
+
+# Python cache
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Docker volumes
+volumes/
+docker/volumes/

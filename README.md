@@ -176,12 +176,17 @@ Clone the GitHub repository into your VM:
 
 ---
 
-### Step 7: Replace Environment Variables
+### Step 7: Configure Environment Variables
 
-Before executing the application, **you must replace the placeholder values** in the `.env` file with your specific credentials and configurations. 
+Before executing the application, you need to create your own `.env` file and populate it with your credentials.
 
-- Open the `.env` file.
-- Replace the placeholder values with your actual values (e.g., `your_airflow_user`, `your_project_id`, `your_gcs_bucket_name`, etc.).
+- Copy the provided `.env.example` file and rename it to `.env`:
+
+  ```bash
+  cp .env.example .env
+  ```
+
+- Open the newly created `.env` file and replace the placeholder values with your actual credentials (e.g., `your_airflow_user`, `your_project_id`, `your_gcs_bucket_name`, etc.).
 
 ---
 
