@@ -28,6 +28,20 @@ Along with weather data, the project uses historical crop statistics for enhance
 #### 📌 Data Source:
 The crop data is downloaded from the **ICRISAT District-Level Database**.
 
+To manually obtain the dataset:
+
+1. Visit [ICRISAT District Level Database](http://data.icrisat.org/dld/src/crops.html).
+2. Use the dropdown menus and select:
+   - **Categories**: `Crops`
+   - **Sub Category (Crops)**: `Area Production Yield`
+   - **Apportioned or Unapportioned**: `Apportioned`
+   - **States**: `Andhra Pradesh`
+   - **Districts**: `Visakhapatnam`
+   - **Elements**: `Area`, `Production`, `Yield`
+   - **Items**: `Rice`
+   - **Year Range**: `1966` to `2017`
+3. Submit the form and download the resulting Excel file.
+
 #### 📍 Location Chosen:
 - **State:** Andhra Pradesh (AP)  
 - **District:** Visakhapatnam
